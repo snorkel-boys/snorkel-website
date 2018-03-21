@@ -1,5 +1,31 @@
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+.row {
+  outline: 1px solid orange;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: .5rem 1rem;
+  border: 1px solid red;
+  background-color: lightblue;
+}
+
+li {
+  display: block;
+  margin-right: 10;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  border: 1px solid blue;
 }

@@ -1,80 +1,47 @@
 {% extends "base.html" %}
-{% block title %}baemin{% endblock %}
+{% load static %}
 {% block body %}
-{% include "navbar.html" %}
 <div class="container">
-  {% if user.is_authenticated %}
-    {% if user.partner %}
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <h2>환영합니다.</h2>
-          <table class="table">
-            <tr>
-              <th>
-                업체이름
-              </th>
-              <td>
-                {{ user.partner.name }}
-              </td>
-            </tr>
-            <tr>
-              <th>
-                연락처
-              </th>
-              <td>
-              {{ user.partner.contact }}
-              </td>
-            </tr>
-            <tr>
-              <th>
-                주소
-              </th>
-              <td>
-              {{ user.partner.address }}
-              </td>
-            </tr>
-            <tr>
-              <th>
-                업체 소개
-              </th>
-              <td>
-              {{ user.partner.description }}
-              </td>
-            </tr>
-          </table>
-          <a href="/partner/edit/">
-            <button class="btn btn-default btn-block">
-              수정하기
-            </button>
-          </a>
-        </div>
-      </div>
-    {% else %}
-      추가정보를 입력하세요
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <form action="" method="post">
-            {% csrf_token %}
-            <!-- <div class="form-group">
-              <input type="text" name="name" class="form-control">
-            </div>
-            <div>
-              <input type="text" name="contact">
-            </div>
-            <div>
-              <input type="text" name="address">
-            </div>
-            <div>
-              <input type="text" name="description">
-            </div> -->
-            {{ form.as_p }}
-            <button class="btn btn-default">저장하기</button>
-          </form>
-        </div>
-      </div>
-    {% endif %}
-  {% else %}
-  <div>로그인 해주세요.</div>
-  {% endif %}
+{% include "navbar.html" %}
+  <div class="row">
+    <div class="col">
+      <h2>데이터 시대를 준비하는 남자들의 표류기 : Snorkel</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <img class="img-responsive" src='{% static "images/snorkel_logo.jpg" %}' alt="Snorkel's logo">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      우리는 똑똑합니다
+    </div>
+    <div class="col-sm-4">
+      <img class="img-responsive" src='{% static "images/2boxa.jpg" %}' alt="예천 2박사">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      Sexy
+    </div>
+    <div class="col-sm-8">
+      <img class="img-responsive" src='{% static "images/steve.jpg" %}' alt="스티브 장스">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      우리는 시작합니다
+    </div>
+    <div class="col-sm-4">
+      <img class="img-responsive" src='{% static "images/sungineer.jpg" %}' alt="선지니어">
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>
+      © 2018 Snorkel, Inc
+    </span>
+  </footer>
 </div>
 {% endblock %}
