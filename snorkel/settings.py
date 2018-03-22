@@ -25,7 +25,7 @@ SECRET_KEY = '13g55_ml7$zntag677t^hrbeg@_o78%m2$5w2wpb=6h%1x9!q)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 
 # Application definition
@@ -130,4 +130,5 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
+import django_heroku
 django_heroku.settings(locals())
