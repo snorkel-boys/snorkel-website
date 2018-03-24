@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-<div class="container">
 {% include "navbar.html" %}
+<div class="container">
   <div class="row">
     <div class="col">
       <h2>데이터 시대를 준비하는 남자들의 표류기 : Snorkel</h2>
@@ -10,38 +10,58 @@
   </div>
 
   <div class="row">
-    <img class="img-responsive" src='{% static "images/snorkel_logo.jpg" %}' alt="Snorkel's logo">
+    <img class="img-fluid" src='{% static "images/snorkel_logo.jpg" %}' alt="Snorkel's logo">
   </div>
 
-  <div class="row">
-    <div class="col-sm-8">
-      우리는 똑똑합니다
+  <div data-spy="scroll" data-target="#navbar" data-offset="0">
+
+    <div class="row" id="motto">
+      <div class="col-sm-8">
+        우리는 똑똑합니다
+      </div>
+      <div class="col-sm-4">
+        <img class="img-fluid" src='{% static "images/2boxa.jpg" %}' alt="예천 2박사">
+      </div>
     </div>
-    <div class="col-sm-4">
-      <img class="img-responsive" src='{% static "images/2boxa.jpg" %}' alt="예천 2박사">
+    <div class="row">
+      <div class="col-sm-4">
+        Sexy
+      </div>
+      <div class="col-sm-8">
+        <img class="img-fluid" src='{% static "images/steve.jpg" %}' alt="스티브 장스">
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      Sexy
+    <div class="row">
+      <div class="col-sm-8">
+        우리는 시작합니다
+      </div>
+      <div class="col-sm-4">
+        <img class="img-fluid" src='{% static "images/sungineer.jpg" %}' alt="선지니어">
+      </div>
     </div>
-    <div class="col-sm-8">
-      <img class="img-responsive" src='{% static "images/steve.jpg" %}' alt="스티브 장스">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-8">
-      우리는 시작합니다
-    </div>
-    <div class="col-sm-4">
-      <img class="img-responsive" src='{% static "images/sungineer.jpg" %}' alt="선지니어">
-    </div>
+
   </div>
 
   <footer class="footer">
-    <span>
-      © 2018 Snorkel, Inc
-    </span>
+    <div class="row">
+      <div class="col-sm-6" style="text-align: center;">
+        <span>
+          © 2018 Snorkel, Inc
+        </span>
+      </div>
+      <div class="col-sm-6">
+        <div style="font-size:2em; color:Red">
+          <i class="fab fa-youtube"></i>
+        </div>
+        <div style="font-size:2em; color:Blue">
+          <i class="fab fa-facebook"></i>
+        </div>
+        <div style="font-size:2em; color:Tomato">
+          <i class="fab fa-instagram"></i>
+        </div>
+
+      </div>
+    </div>
   </footer>
 </div>
 {% endblock %}
