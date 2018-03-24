@@ -2,17 +2,17 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=8; IE7; IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>{% block title %}Snorkel{% endblock %}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href='{% static "css/lib/bootstrap.min.css" %}'> -->
-    <!-- <link rel="stylesheet" href='{% static "css/lib/fontawesome.min.css" %}'> -->
-    <link rel="stylesheet" href='{% static "css/base.css" %}'>
-    <link rel="shortcut icon" href='{%  static "images/favicon.png" %}'>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=8; IE7; IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>{% block title %}Snorkel{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href='{% static "css/lib/bootstrap.min.css" %}'> -->
+  <!-- <link rel="stylesheet" href='{% static "css/lib/fontawesome.min.css" %}'> -->
+  <link rel="stylesheet" href='{% static "css/base.css" %}'>
+  <link rel="shortcut icon" href='{%  static "images/favicon.png" %}'>
 </head>
 <body>
   {% block body %}{% endblock %}
@@ -25,9 +25,52 @@
 
   <!-- custom js -->
   <script>
+    // when clicking navbar item, it will be active-styled
     $('.navbar-nav').on('click', 'li', function() {
       $('.navbar-nav li.active').removeClass('active');
       $(this).addClass('active');
+    });
+
+    // when scrolling down, navbar will be dissapeared
+    $(function () {
+      var lastScrollTop = 0;
+      var $navbar = $('.navbar');
+      var navbarHeight = $navbar.outerHeight();
+      var movement = 0;
+      var lastDirection = 0;
+
+      $(window).scroll(function(event){
+        var st = $(this).scrollTop();
+        movement += st - lastScrollTop;
+
+        if (st > lastScrollTop) { // scroll down
+          if (lastDirection != 1) {
+            movement = 0;
+          }
+          var margin = Math.abs(movement);
+          if (margin > navbarHeight) {
+            margin = navbarHeight;
+          }
+          margin = -margin;
+          $navbar.css('margin-top', margin+"px")
+
+          lastDirection = 1;
+        } else { // scroll up
+          if (lastDirection != -1) {
+            movement = 0;
+          }
+          var margin = Math.abs(movement);
+          if (margin > navbarHeight) {
+            margin = navbarHeight;
+          }
+          margin = margin-navbarHeight;
+          $navbar.css('margin-top', margin+"px")
+
+          lastDirection = -1;
+        }
+
+        lastScrollTop = st;
+      });
     });
   </script>
 </body>
