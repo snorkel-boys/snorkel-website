@@ -2,6 +2,7 @@
   outline: 1px solid orange;
 }
 
-.container {
+div.container-fluid {
   margin-top: 80px;
+  background-color: rgb(1,159,232);
 }

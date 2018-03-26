@@ -2,8 +2,12 @@
 {% load static %}
 {% block body %}
 {% include "navbar.html" %}
-<div class="container">
-  <div class="row">
+<div class="container-fluid" style="margin-top: 80px;">
+  <div class="row" style="background-color: #019FE8; justify-content: center;">
+    <img class="img" src='{% static "images/snorkel_logo_steve_background.jpg" %}' alt="Snorkel's logo">
+  </div>
+
+  <!-- <div class="row">
     <div class="col">
       <h2>데이터 시대를 준비하는 남자들의 표류기 : Snorkel</h2>
     </div>
@@ -63,6 +67,6 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
 </div>
 {% endblock %}

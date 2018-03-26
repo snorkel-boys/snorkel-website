@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
-  <a class="navbar-brand" href="#">Snorkel</a>
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-color-custom fixed-top" style="background-color: #FEFCFF;">
+  <a class="navbar-brand page-scroll"><img width="100" height="40" src='{% static "images/snorkel_logo_steve.jpg" %}' href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,21 +8,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" style="color: #019FE8;">홈 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#motto">모토</a>
+        <a class="nav-link" href="#motto" style="color: #019FE8;">모토</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#mindmap">마인드맵</a>
+        <a class="nav-link" href="#mindmap" style="color: #019FE8;">마인드맵</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="">로그인</a>
+        <a class="nav-link" href="" style="color: #019FE8;">로그인</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#getsnorkel">Get your snorkel on</a>
+        <a class="nav-link" href="#getsnorkel" style="color: #019FE8;">Get your snorkel on</a>
       </li>
     </ul>
   </div>
