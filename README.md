@@ -35,4 +35,5 @@
   - https://github.com/snorkel-boys/snorkel-website 로 가서 Pull Request 클릭
   - Create Pull Request하면 공동 repository에 커밋한 사항이 저장이 됨!
 - 수정된 버전 다시 받기
+  - 다른 사람이 커밋해서 풀리퀘스트까지 받아들여져 프로젝트 반영이 되면 내 로컬컴퓨터에 있는 파일과 내용이 달라지기때문에 수시로 업데이트된 내용 받아올 것
   - git pull origin master
