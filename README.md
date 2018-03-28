@@ -19,8 +19,6 @@
 
 5. 간단한 깃 사용법
 - 기본적인 구조
-  - snorkel-website(공동프로젝트) / snorkel-website(각자 복사한 repository)
-  - 각자의 컴퓨터에서 각자 복사한 repository에서 맘대로 수정 작업을 하고
   - git add .로 stage에 올리고 git commit -m "수정사항"으로 커밋을 한 다음에
   - git push origin master하면 각자의 컴퓨터 수정파일이 멤버들 개인 repository로 업로드 됨
   - https://github.com/snorkel-boys/snorkel-website 로 가서 Pull Request 클릭
@@ -28,3 +26,13 @@
 - 내 컴퓨터로 다운받기
   - https://github.com/snorkel-boys/snorkel-website 에서 내 repository(저장소)로 Fork(복사)을 한다
   - https://github.com/내아이디/snorkel-website로 가서 복사된 프로젝트를 내 컴퓨터로 다운 : git clone https://github.com/내아이디/snorkel-website
+- Branch 파기
+  - 각자 수정할때 Master Branch에 푸쉬하지 말고 따로 수정하는 기능의 브랜치를 만들어서 나중에 Master에 merge할 것.(오류 방지)
+  - git branch(브랜치 보기)
+  - git branch something(something 이라는 브랜치 생성)
+  - git checkout something(something 이라는 브랜치로 이동)
+  - 커밋(세부과정 생략)
+  - https://github.com/snorkel-boys/snorkel-website 로 가서 Pull Request 클릭
+  - Create Pull Request하면 공동 repository에 커밋한 사항이 저장이 됨!
+- 수정된 버전 다시 받기
+  - git pull origin master
