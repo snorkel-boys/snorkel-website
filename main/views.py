@@ -8,7 +8,7 @@ def index(request):
 
 # 채팅방 리스트
 def room(request):
-    room_list = ChatRoom.object.all().order_by(create_time)
+    room_list = ChatRoom.objects.all().order_by('-create_time')
     context = {'room_list': room_list}
     return render(request, 'chatroom/room.html', context)
 
