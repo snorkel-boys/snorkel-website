@@ -8,6 +8,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('signup/', signup, name='signup'),
     path('login/', login, name='login'),
-    path('chatroom/', views.room, name='room'),
-    path('chatroom/(?P<room_id>\d+)`/$', views.detail, name='detail'),
+    re_path(r'^chatroom/', views.room, name='room'),
+    re_path(r'^chatroom/(?P<room_id>\d+)`/$', views.detail, name='detail'),
 ]
