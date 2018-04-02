@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from main.models import ChatRoom
+from django.contrib.auth.models import User
 # Create your views here.
 
 def index(request):
@@ -15,3 +16,9 @@ def room(request):
 # 채팅방 입장
 def detail(request):
     return render(request, 'chatroom/detail.html', context)
+
+def signup(request):
+    return render(request, "signup.html", {})
+
+def login(request):
+    return render(request, "login.html", {})
