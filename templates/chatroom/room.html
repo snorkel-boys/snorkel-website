@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+{% include "navbar.html" %}
+<div style="margin-top: 80px;">
+	{% if room_list %}
+		<ul>
+		{% for chatroom in room_list %}
+			<li>
+				<a href="/chatroom/{{ chatroom.id }}/">{{ chatroom.name }}</a>
+			</li>
+		 {% endfor %}
+		</ul>
+	{% else %}
+		<p> No room </p>
+	{% endif %}
+</div>
+{% endblock %}
