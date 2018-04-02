@@ -1,5 +1,5 @@
 from django.urls import path, include
-# 헌수 궁금증) include 왜 넣는 거지?
+# 헌수 궁금증) include 왜 넣는 거지? 
 from . import views
 from . views import signup
 from . views import login
