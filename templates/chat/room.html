@@ -1,0 +1,96 @@
+<!-- chat/templates/chat/room.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+</head>
+<body>
+    <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
+    <input id="chat-message-input" type="text" size="100"/><br/>
+    <input id="chat-message-submit" type="button" value="Send"/>
+</body>
+<script>
+    var roomName = {{ room_name_json }};
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        document.querySelector('#chat-log').value += (message + '\n');
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+</script>
+</html>
+<!-- <!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ room.label }}</title>
+  </head>
+
+  <body>
+    {% if user.is_authenticated %}
+      <p>
+        <label for="handle">닉네임: </label>
+        <input id="handle" type="text" placeholder="handle" value="{{ user.username }}">
+      </p>
+    {% else %}
+      <p>
+        <label for="handle">닉네임: </label>
+        <input id="handle" type="text" placeholder="handle">
+      </p>
+    {% endif %}
+    <form id="chatform">
+      {% csrf_token %}
+      <table id="chat">
+        <tbody>
+          {% for message in messages %}
+            <tr>
+              <td>{{ messages.formatted_timestamp }}</td>
+              <td>{{ messages.handle }}</td>
+              <td>{{ messages.message }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>말을 걸어보세요:</td>
+            <td colspan=2>
+              <input id="message" type="text" placeholder="message">
+              <button type="submit" id="go">say it</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{% static 'chat/chat.js' %}"></script>
+    <script src="{% static 'chat/reconnecting_websocket_min.js' %}"></script>
+  </body>
+</html> -->

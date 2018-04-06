@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['snorkel-boys.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
+    'channels',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'snorkel.urls'
@@ -70,9 +72,10 @@ TEMPLATES = [
         },
     },
 ]
-
+# for original Django:
 WSGI_APPLICATION = 'snorkel.wsgi.application'
-
+# for channels:
+ASGI_APPLICATION = "snorkel.routing.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -127,7 +130,18 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+# DATABASES['default']['CONN_MAX_AGE'] = 500
+
+# redis_host = os.environ.get('REDIS_HOST', 'localhost')
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG' : {
+            "hosts" : [('127.0.0.1', 6379)],
+        },
+        # 'ROUTING': 'chat.routing.channel_routing',
+    },
+}
