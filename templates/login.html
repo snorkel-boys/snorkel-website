@@ -2,16 +2,15 @@
 {% block title %}Snorkel login{% endblock %}
 {% block body %}
 {% include "navbar.html" %}
-<div class="container">
+<div class="pt-5 text-center">
   <form method="post" action="" class="form-signin">
     {% csrf_token %}
-    <h2 class="form-signin-heading">Please log in</h2>
+    <h1 class="h3 mb-3 form-weight-normal">Please sign up</h1>
     <input type="text" name="username"
-      class="form-control" placeholder="Username" required="" autofocus="">
+      class="form-control" placeholder="Username" required autofocus>
     <input type="password" name="password"
-      class="form-control" placeholder="Password" required="">
-    {{ error }}
-    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-outline-primary btn-block" type="submit">
       Log in
     </button>
   </form>
