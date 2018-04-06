@@ -18,7 +18,8 @@ def detail(request):
     return render(request, 'chatroom/detail.html', context)
 
 def signup(request):
-    return render(request, "signup.html", {})
+    ctx = {}
+    return render(request, "signup.html", ctx)
 
 def login(request):
     return render(request, "login.html", {})
