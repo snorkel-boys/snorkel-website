@@ -6,7 +6,6 @@ div.container-fluid {
   margin-top: 80px;
   background-color: rgb(1,159,232);
 }
-
 /*signup and login*/
 .form-signin {
   width: 100%;
@@ -32,14 +31,14 @@ div.container-fluid {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="email"] {
+.form-signin input[type="email"],input[id="signupPassword"] {
   margin-bottom: -1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
+.form-signin input[type="password"][name="confirm-password"],input[id="loginPassword"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

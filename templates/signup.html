@@ -11,8 +11,11 @@
       class="form-control" placeholder="Username" required autofocus>
     <input type="email" name="email"
       class="form-control" placeholder="Email address" required>
-    <input type="password" name="password"
-      class="form-control" placeholder="Password" required="">
+    <input type="password" name="password" id="signupPassword"
+      class="form-control" placeholder="Password" required>
+    <input type="password" name="confirm-password"
+      class="form-control" placeholder="Confirm Password" required>
+    <div class="h5 font-weight-bold text-info">{{ error }}</div>
     <button class="btn btn-lg btn-outline-primary btn-block" type="submit">
       Sign up
     </button>
