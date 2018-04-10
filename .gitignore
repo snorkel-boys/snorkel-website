@@ -3,7 +3,12 @@
 __pycache__
 db.sqlite3
 .DS_Store
+<<<<<<< HEAD
+/.project
+/.pydevproject
+=======
 /.pydevproject
 /.project
 /.settings/
 .idea/
+>>>>>>> branch 'master' of https://github.com/snorkel-boys/snorkel-website.git
