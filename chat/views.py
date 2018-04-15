@@ -13,7 +13,7 @@ def room(request, room_name):
     #print("$$$$$$ 3 : ", User.get_username(self))
     return render(request, 'chat/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name)),
-        'user_name': request.user.get_username()
+        'user_name': mark_safe(json.dumps(request.user.get_username()))
     })
 
 def mask(request):
