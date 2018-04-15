@@ -17,9 +17,13 @@ def mask(request):
         pass
     elif request.method == "POST":
         ask = request.POST.get("film")
-        filmlist = search_list(ask)
-        ctx.update({"filmlist": filmlist})
-        return render(request, "chat/mask.html", ctx)
+        try:
+            filmlist = search_list(ask)
+            ctx.update({"filmlist": filmlist})
+            return render(request, "chat/mask.html", ctx)
+        except AttributeError:
+            ctx.update({"error": "검색결과가 없습니다"})
+            return render(request, "chat/mask.html", ctx)
     return render(request, 'chat/mask.html', ctx)
 # import random
 # import string

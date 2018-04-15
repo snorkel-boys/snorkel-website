@@ -18,6 +18,9 @@
       </button>
     </form>
   </div>
+  {% if error %}
+    <div class="mt-5 pt-5 row justify-content-center h5 font-weight-bold text-info">{{ error }}</div>
+  {% endif %}
   <div class="row ml-5 mt-5 pl-5">
     <ol class="list-unstyled">
       {% for code, name, image, genre, nation, director, actor in filmlist %}
