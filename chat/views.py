@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
 import json
+from .mask import search_list
 
 def index(request):
     return render(request, 'chat/index.html', {})
@@ -9,6 +10,17 @@ def room(request, room_name):
     return render(request, 'chat/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name))
     })
+
+def mask(request):
+    ctx = {}
+    if request.method == "GET":
+        pass
+    elif request.method == "POST":
+        ask = request.POST.get("film")
+        filmlist = search_list(ask)
+        ctx.update({"filmlist": filmlist})
+        return render(request, "chat/mask.html", ctx)
+    return render(request, 'chat/mask.html', ctx)
 # import random
 # import string
 # from django.db import transaction
