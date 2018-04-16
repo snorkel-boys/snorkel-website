@@ -3,14 +3,22 @@ from django.utils.safestring import mark_safe
 import json
 from .mask import search_list
 from django.contrib.auth.models import User
+from chat.models import Room 
 
 def index(request):
-    return render(request, 'chat/index.html', {})
+    try:
+        room_list = Room.objects.all().order_by('-create_time')
+    except Room.DoesNotExist:
+        room_list = None
+        
+    context = {'room_list': room_list}
+    return render(request, 'chat/index.html', context)
 
 def room(request, room_name):
     print("$$$$$$ 1 : ", request.user.get_username())
     #print("$$$$$$ 2 : ", User.get_username())
     #print("$$$$$$ 3 : ", User.get_username(self))
+
     return render(request, 'chat/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name)),
         'user_name': mark_safe(json.dumps(request.user.get_username()))
