@@ -21,16 +21,30 @@
   {% if error %}
     <div class="mt-5 pt-5 row justify-content-center h5 font-weight-bold text-info">{{ error }}</div>
   {% endif %}
-  <div class="row ml-5 mt-5 pl-5">
+  <div class="row justify-content-center ml-5 mt-5 pl-5">
     <ol class="list-unstyled">
-      {% for code, name, image, genre, nation, director, actor in filmlist %}
+      {% for code, name, image, genre, nation, director, actor, detail in filmlist %}
         <li class="mb-5">
-          <a href="#"><img src="{{ image }}" width="67" height="95" alt=""></a>
-          <a class="text-secondary font-weight-bold" href="#">제목 : {{ name }}</a>
+          <a class="btn btn-outline-light btn-block" data-toggle="collapse"
+             href="#collapse{{ code }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <img src="{{ image }}" width="67" height="95" alt="">
+            <span class="ml-3 text-dark font-weight-bold">{{ name }}</span>
+          </a>
+          <div class="collapse" id="collapse{{ code }}">
+            <div class="card card-body p-0 list-group">
+              {% for info in detail %}
+                <button type="button" class="list-group-item list-group-item-action">
+                  <img src="{{ info.3 }}" width="111" height="139" alt="">
+                  <span class="font-weight-bold">{{ info.0 }}</span>
+                  <span class="font-weight-light ml-3">{{ info.1 }} / {{ info.2 }}</span>
+                </button>
+              {% endfor %}
+            </div>
+          </div>
           <div class="text-secondary">장르 : {{ genre }}</div>
           <div class="text-secondary">국가 : {{ nation }}</div>
-          <div class="text-secondary" href="#">감독 : {{ director }}</div>
-          <div class="text-secondary" href="#">출연 : {{ actor }}</div>
+          <div class="text-secondary">감독 : {{ director }}</div>
+          <div class="text-secondary">출연 : {{ actor }}</div>
         </li>
       {% endfor %}
     </ol>

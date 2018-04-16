@@ -2,6 +2,14 @@
   margin-top: 80px;
   background-color: rgb(1,159,232);
 }
+
+
+/* button for mask */
+a[data-toggle="collapse"] {
+  text-align: left;
+}
+
+
 /*signup and login*/
 .form-signin {
   width: 100%;
