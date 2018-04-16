@@ -6,6 +6,8 @@ from django.utils import timezone
 class Room(models.Model):
     name = models.TextField()
     label = models.SlugField(unique=True)
+    cnt_member = models.IntegerField(default = 0)
+    create_time = models.DateTimeField(auto_now_add = True)
 
     def __unicode__(self):
         return self.label
