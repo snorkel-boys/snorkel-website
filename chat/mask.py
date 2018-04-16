@@ -26,15 +26,32 @@ def search_list(film):
         ]
         for li in lis:
             code = li.find('a', {'href': re.compile(r'^/movie/bi/mi')}).get('href').split('=')[-1]
-            image = li.find('img').get('src')
-            name = li.find('dt').text
-            genre = ", ".join([gen.text for gen in li.find_all('a', {'href': re.compile(r'.genre.')})])
-            nation = ", ".join([nat.text for nat in li.find_all('a', {'href': re.compile(r'.nation.')})])
-            people = li.find_all('dd', {'class': 'etc'})[1].text.lstrip('감독 : ').split('|출연 : ')
-            director = people[0]
-            actor = people[1]
-            filmlist.append((code, name, image, genre, nation, director, actor))
+            detail = actors(code)
+            if detail:
+                image = li.find('img').get('src')
+                name = li.find('dt').text
+                genre = ", ".join([gen.text for gen in li.find_all('a', {'href': re.compile(r'.genre.')})])
+                nation = ", ".join([nat.text for nat in li.find_all('a', {'href': re.compile(r'.nation.')})])
+                people = li.find_all('dd', {'class': 'etc'})[1].text.lstrip('감독 : ').split('|출연 : ')
+                director = people[0]
+                actor = people[1]
+                filmlist.append((code, name, image, genre, nation, director, actor, detail))
         if not soup.find("td", {"class": "next"}):
             break
         page += 1
     return filmlist
+
+
+def actors(code):
+    addr = "https://movie.naver.com/movie/bi/mi/detail.nhn?code={}".format(code)
+    r = requests.get(addr)
+    soup = BeautifulSoup(r.content, "html.parser")
+    actinfo = [
+        (li.find("p", {"class": "pe_cmt"}).text.lstrip('\n').rstrip(' 역\n'),
+         li.find("a", {"class": "k_name"}).text,
+         li.find("em", {"class": "e_name"}).text,
+         li.find("img").get("src"))
+        for li in soup.find("ul", {"class": "lst_people"}).find_all("li")
+        if li.find("p", {"class": "pe_cmt"})
+            ]
+    return actinfo
